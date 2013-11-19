@@ -1,6 +1,6 @@
-HexGL
+ThreeGame
 =========
-
+This Demo is based on 
 Source code of [HexGL](http://hexgl.bkcore.com), the futuristic HTML5 racing game by [Thibaut Despoulain](http://bkcore.com)
 
 ## Branches
