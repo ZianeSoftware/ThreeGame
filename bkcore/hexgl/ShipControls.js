@@ -11,6 +11,11 @@ bkcore.hexgl = bkcore.hexgl || {};
 bkcore.hexgl.ShipControls = function (domElement) {
     var self = this;
 
+    var max = 10;
+    var min = 5;
+    var randomTime = min + (max - min) * Math.random();
+    
+
     this.active = true;
     this.destroyed = false;
 
@@ -100,11 +105,11 @@ bkcore.hexgl.ShipControls = function (domElement) {
     this.isMiddle = false;
     this.middleScale = 1;
     this.middleTime = 0;
+    this.middleRandomTime = randomTime*1000;
     this.resetMiddleTime = false;
     this.middleTotalTime = 0;
     this.levelTime = 90;
     this.elapsedTime = 0;
-
 
     this.resetPos = null;
     this.resetRot = null;
@@ -403,8 +408,13 @@ bkcore.hexgl.ShipControls.prototype.collisionCheck = function (dt) {
         this.middleTime -= dt * 16.6;
 
         if (this.middleTime <= 0) {
+            var max = 10;
+            var min = 5;
+            var randomTime = min + (max - min) * Math.random();
             this.middleTime = 0;
+            this.middleRandomTime = randomTime*1000;
             this.resetMiddleTime = false;
+            
         }
     }
 
@@ -423,7 +433,7 @@ bkcore.hexgl.ShipControls.prototype.collisionCheck = function (dt) {
     else {
         this.CollisionDebug = "";
         this.shield = 1;
-        this.middleTotalTime += (dt * 16.6 / this.getLevelTime())*(this.speed/this.maxSpeed);
+        this.middleTotalTime += (dt * 16.6 / this.getLevelTime()) * (this.speed / this.maxSpeed);
     }
     //this.middleScale++;
 

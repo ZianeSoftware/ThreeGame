@@ -134,7 +134,7 @@ bkcore.hexgl.Gameplay.prototype.end = function(result)
 	}
 	else if(result == this.results.DESTROYED)
 	{
-		this.hud.display("Destroyed");
+		this.hud.display("Game Over");
 		this.step = 100;
 	}
 }
@@ -174,17 +174,32 @@ bkcore.hexgl.Gameplay.prototype.update = function () {
         this.hud.display(this.shipControls.CollisionDebug);
 
     this.shipControls.elapsedTime = this.timer.time.elapsed;
-    
 
-    if (this.shipControls.middleTime > 10000) {
+
+    if (this.shipControls.middleTime > this.shipControls.middleRandomTime) {
+        var rnd = Math.random();
         this.shipControls.resetMiddleTime = true;
-        this.hud.drawCircle = true;
+        if(rnd > 0.5)
+        {
+            this.hud.drawCircle = true;
+            this.hud.drawTriangle = false;    
+        }
+        else
+        {
+            this.hud.drawCircle = false;
+            this.hud.drawTriangle = true;    
+        }
+        
     }
-    else if (this.shipControls.middleTime > 7000) {
+    else if (this.shipControls.middleTime > (this.shipControls.middleRandomTime - 3000)) {
         if (this.shipControls.key.bonus) {
             if (this.hud.drawCircle == true && this.shipControls.resetMiddleTime == true) {
                 this.hud.drawCircle = false;
                 this.shipControls.middleTotalTime += (5000.0 / this.shipControls.getLevelTime())
+            }
+            else  if (this.hud.drawTriangle == true && this.shipControls.resetMiddleTime == true) {
+                this.hud.drawTriangle = false;
+                this.shipControls.middleTotalTime -= (5000.0 / this.shipControls.getLevelTime())
             }
         }
     }

@@ -277,7 +277,8 @@ bkcore.hexgl.HexGL.prototype.initHUD = function()
 		bg: this.track.lib.get("images", "hud.bg"),
 		speed: this.track.lib.get("images", "hud.speed"),
 		shield: this.track.lib.get("images", "hud.shield"),
-        circle: this.track.lib.get("images", "hud.circle")
+        circle: this.track.lib.get("images", "hud.circle"),
+        triangle: this.track.lib.get("images", "hud.triangle")
 	});	
 	this.containers.overlay.appendChild(this.hud.canvas);
 }

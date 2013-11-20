@@ -28,6 +28,7 @@ bkcore.hexgl.HUD = function (opts) {
     this.fgshield = opts.shield; //"textures/hud/hud-fg-shield.png";
 
     this.circle = opts.circle;
+    this.triangle = opts.triangle;
 
     this.speedFontRatio = 24;
     this.speedBarRatio = 2.91;
@@ -71,6 +72,7 @@ bkcore.hexgl.HUD = function (opts) {
     this.maxStep = 2;
 
     this.drawCircle = false;
+    this.drawTriangle = false;
 };
 
 bkcore.hexgl.HUD.prototype.resize = function(w, h)
@@ -258,6 +260,11 @@ bkcore.hexgl.HUD.prototype.update = function(speed, speedRatio, shield, shieldRa
 
     if(this.drawCircle == true)
             this.ctx.drawImage(this.circle, SCREEN_HW, 256, 256, 128);
+
+    if(this.drawTriangle == true)
+            this.ctx.drawImage(this.triangle, SCREEN_HW, 256, 256, 128);
+
+            
 	
 	this.messageTiming++;
 

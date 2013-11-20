@@ -76,7 +76,8 @@ bkcore.hexgl.tracks.Cityscape = {
                     'hud.bg': "textures/hud/hud-bg.png",
                     'hud.speed': "textures/hud/hud-fg-speed.png",
                     'hud.shield': "textures/hud/hud-fg-shield.png",
-                    'hud.circle': "textures/hud/circle.png"
+                    'hud.circle': "textures/hud/circle.png",
+                    'hud.triangle': "textures/hud/triangle.png"
                 }
             });
         }
