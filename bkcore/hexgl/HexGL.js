@@ -234,14 +234,14 @@ bkcore.hexgl.HexGL.prototype.displayScore = function(f, l)
 		+'&p[url]='+encodeURIComponent('http://hexgl.bkcore.com')
 		+'&p[images][0]='+encodeURIComponent('http://hexgl.bkcore.com/image.png'));
 
-	bkcore.hexgl.Ladder.displayLadder('finish-ladder', t, d, 8);
+	//bkcore.hexgl.Ladder.displayLadder('finish-ladder', t, d, 8);
 
 	if(this.manager.get('game').objects.lowFPS >= 999)
 		sl != undefined && (sl.innerHTML = 'Note: Your framerate was pretty low, you should try a lesser graphic setting!');
 	else
 		sl != undefined && (sl.innerHTML = '');
 
-	dc.style.display = 'block';
+	//dc.style.display = 'block';
 }
 
 bkcore.hexgl.HexGL.prototype.initRenderer = function()

@@ -32,7 +32,7 @@ bkcore.hexgl.HUD = function (opts) {
 
     this.speedFontRatio = 24;
     this.speedBarRatio = 2.91;
-    this.shieldFontRatio = 64;
+    this.shieldFontRatio = 16;
     this.shieldBarYRatio = 34;
     this.shieldBarWRatio = 18.3;
     this.shieldBarHRatio = 14.3;
@@ -148,13 +148,13 @@ bkcore.hexgl.HUD.prototype.update = function(speed, speedRatio, shield, shieldRa
 	var sh = sho*totalMiddleTime;
 	var sy = (SCREEN_WIDTH/this.shieldBarYRatio)+sho-sh;
 	
-
+    
 	if(this.step == 0)
 	{
 		this.ctx.clearRect(0 , oh , SCREEN_WIDTH , nh);
 
 	    this.ctx.drawImage(this.bg, o, oh, nw, nh);
-
+/*
 	    this.ctx.save();
 		this.ctx.beginPath();
 		this.ctx.moveTo(bw+ba+SCREEN_HW, oh);
@@ -165,7 +165,7 @@ bkcore.hexgl.HUD.prototype.update = function(speed, speedRatio, shield, shieldRa
 		this.ctx.clip();
 	    this.ctx.drawImage(this.fgspeed, o, oh, nw, nh);
 		this.ctx.restore();
-
+        */
 	    this.ctx.save();
 		this.ctx.beginPath();
 		this.ctx.moveTo(-sw+SCREEN_HW, oh+sy);
@@ -182,10 +182,8 @@ bkcore.hexgl.HUD.prototype.update = function(speed, speedRatio, shield, shieldRa
 	    this.ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
 	    this.ctx.fillText(speed, SCREEN_HW, SCREEN_HEIGHT - nh*0.57);
 
-	    // SHIELD
-		this.ctx.font = (SCREEN_WIDTH/this.shieldFontRatio)+"px "+this.font;
-	    this.ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
-	    this.ctx.fillText(Math.round(totalMiddleTime*100), SCREEN_HW, SCREEN_HEIGHT - nh*0.44);
+	    
+        
 	}
 	else if(this.step == 1)
 	{
@@ -200,12 +198,18 @@ bkcore.hexgl.HUD.prototype.update = function(speed, speedRatio, shield, shieldRa
 		}
 
 		// LAPS
-		if(this.lap != "")
+	/*	if(this.lap != "")
 		{
 			this.ctx.font = (SCREEN_WIDTH/this.timeFontRatio)+"px "+this.font;
 		    this.ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
 		    this.ctx.fillText(this.lap, SCREEN_WIDTH-SCREEN_WIDTH/this.lapMarginRatio, SCREEN_WIDTH/this.timeMarginRatio);
-		}
+		}*/
+
+        // SCORE    
+        this.ctx.font = (SCREEN_WIDTH/this.shieldFontRatio)+"px "+this.font;
+        this.ctx.fillStyle = "rgba(255, 255, 255, 1.0)";
+        this.ctx.fillText(Math.round(totalMiddleTime*100), SCREEN_WIDTH-SCREEN_WIDTH/this.lapMarginRatio, SCREEN_WIDTH/this.timeMarginRatio);
+
 
 	    // MESSAGE
 	    var my = SCREEN_HH-SCREEN_WIDTH/this.messageYRatio;
@@ -259,10 +263,10 @@ bkcore.hexgl.HUD.prototype.update = function(speed, speedRatio, shield, shieldRa
 	}
 
     if(this.drawCircle == true)
-            this.ctx.drawImage(this.circle, SCREEN_HW, 256, 256, 128);
+            this.ctx.drawImage(this.circle, SCREEN_HW, 256, 256, 256);
 
     if(this.drawTriangle == true)
-            this.ctx.drawImage(this.triangle, SCREEN_HW, 256, 256, 128);
+            this.ctx.drawImage(this.triangle, SCREEN_HW, 256, 256, 256);
 
             
 	
